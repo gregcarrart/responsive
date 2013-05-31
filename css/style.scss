@@ -1,0 +1,256 @@
+/*vars*/
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700,100);
+$main-font: 'Roboto Slab', serif;
+
+$main-background: url(../img/noise.png) repeat;
+$main-background-color: #fff;
+$main-width: 1200px;
+$main-color: #ffc800;
+$main-highlight: #949494;
+$main-white: #fafafa;
+
+$nav-background-color: #fff2c5;
+
+$items-width: 400px;
+$items-height: 400px;
+$items-background-color: #fff;
+
+$snippet-background-color: rgba(0,0,0,0.4);
+
+$mobile-min: 320px;
+$mobile-max: 480px;
+$tablet-min: $mobile-max + 1;
+$tablet-max: $main-width - 1;
+$between-max: 799px;
+$between-min: $mobile-max +1;
+
+/*mixins*/
+@mixin main-shadow {
+	$horz: 3px;
+	$vert: 3px;
+	$blur: 1px;
+	$spread: 1px;
+	$color: #e9e9e9;
+
+	-moz-box-shadow: $horz $vert $blur $spread $color;
+	-webkit-box-shadow: $horz $vert $blur $spread $color;
+	box-shadow: $horz $vert $blur $spread $color;
+}
+
+@mixin item-shadow {
+	$horz: 0px;
+	$vert: 0px;
+	$blur: 50px;
+	$color: #e8e8e8;
+
+	-moz-box-shadow: inset $horz $vert $blur $color;
+	-webkit-box-shadow: inset $horz $vert $blur $color;
+	box-shadow: inset $horz $vert $blur $color;
+}
+
+@mixin item-transition {
+	-webkit-transition: background-color 0.3s ease;
+  	-moz-transition: background-color 0.3s ease;
+  	-ms-transition: background-color 0.3s ease;
+  	-o-transition: background-color 0.3s ease;
+  	transition: background-color 0.3s ease;
+}
+
+/*main*/
+body {
+	background: $main-background;
+	height: 100%;
+	font-family: $main-font;
+}
+
+#main {
+	width: $main-width;
+	height: 100%;
+	margin: 0 auto;
+
+	@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+		width: 100%;
+	}
+
+	@media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+		width: 100%;
+	}
+}
+
+.header {
+	width: 100%;
+	height: 40px;
+	background-color: $main-background-color;
+	@include main-shadow;
+
+	.logo {
+		float: left;
+		font-size: 20px;
+		margin-top: 10px;
+		width: 200px;
+		content: 'Awesome Site Bro';
+	}
+
+	.nav {
+		position: relative;
+		display: inline-block;
+		float: right;
+		font-size: 14px;
+		font-weight: 700;
+		margin-right: 20px;
+
+		@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
+			width: 100%;
+			margin-right: 0;
+		}
+
+		ul {
+			list-style: none;
+		}
+
+		.nav-list {
+			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
+				display: none;
+				margin-top: 40px;
+				font-size: 25px;			
+			}
+
+			@media only screen and (min-width: $main-width - 1) {
+				display: block !important;
+			}
+		}
+
+		.nav-mobile {
+			display: none;
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: $main-color url(../img/icon-menu.svg) no-repeat center center;
+			height: 40px;
+			width: 40px;
+
+			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
+				display: block;
+			}
+		}
+
+		.nav-item {
+			float: left;
+			*display: inline;
+			zoom: 1;
+			margin-right: 20px;
+
+			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
+				width: 100%;
+				float: none;
+				background-color: $main-color;
+				text-align: center;
+				margin-right: 0;
+				padding: 10px 0 10px 0;
+				border-bottom: 1px solid $items-background-color;
+			}
+
+			a {	
+				text-decoration: none;
+				color: $main-highlight;
+				&:hover {
+					color: $main-highlight;
+				}
+			}
+		}
+	}
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	float: left;
+	margin-top: 20px;
+	background-color: $main-background-color;
+	@include main-shadow;
+
+	.content-inner {
+		width: 100%;
+		margin: 0 auto;
+
+		@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+			width: 100%;
+		}
+
+		@media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
+			width: 800px;
+		}
+
+		@media only screen and (min-width: $between-min) and (max-width: $between-max) {
+			width: 100%;
+		}
+
+		.item {
+			position: relative;
+			width: $items-width;
+			height: $items-height;
+			float: left;
+			background-color: $items-background-color;
+			@include item-shadow;
+			@include item-transition;
+
+			&:hover {
+				background-color: #fff4cd;
+				cursor: pointer;
+			}
+
+			.title {
+				position: absolute;
+				top: 0;
+				font-size: 50px;
+				color: $main-color;
+				background-color: $snippet-background-color
+			}
+
+			.image-container {
+				width: $items-width;
+				height: $items-height;
+				overflow: hidden;
+
+				.hero-image {
+					height: 400px;
+
+					@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+						height: 100%;
+					}
+
+					@media only screen and (min-width: $between-min) and (max-width: $between-max) {
+						height: 115%;
+					}
+				}
+
+				@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+					width: 100%;
+				}
+
+				@media only screen and (min-width: $between-min) and (max-width: $between-max) {
+					width: 100%;
+				}
+			}
+
+			.snippet {
+				position: absolute;
+				width: 100%;
+				bottom: 0;
+				background-color: $snippet-background-color;
+				color: $main-white;
+			}
+
+			@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
+				width: 100%;
+				height: 100%;
+			}
+
+			@media only screen and (min-width: $between-min) and (max-width: $between-max) {
+				width: 100%;
+				height: 100%;
+			}			
+		}
+	}
+}
