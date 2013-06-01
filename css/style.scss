@@ -15,7 +15,7 @@ $items-width: 400px;
 $items-height: 400px;
 $items-background-color: #fff;
 
-$snippet-background-color: rgba(0,0,0,0.4);
+$snippet-background-color: rgba(0,0,0,0.5);
 
 $mobile-min: 320px;
 $mobile-max: 480px;
@@ -200,12 +200,22 @@ body {
 				cursor: pointer;
 			}
 
-			.title {
+			.meta {
 				position: absolute;
-				top: 0;
-				font-size: 50px;
-				color: $main-color;
-				background-color: $snippet-background-color
+				bottom: 0;
+
+				.title {
+					font-size: 50px;
+					float:left;
+					color: $main-color;
+					background-color: $snippet-background-color;
+				}
+				.snippet {
+					width: 100%;
+					background-color: $snippet-background-color;
+					color: $main-white;
+					float: left;
+				}
 			}
 
 			.image-container {
@@ -232,14 +242,6 @@ body {
 				@media only screen and (min-width: $between-min) and (max-width: $between-max) {
 					width: 100%;
 				}
-			}
-
-			.snippet {
-				position: absolute;
-				width: 100%;
-				bottom: 0;
-				background-color: $snippet-background-color;
-				color: $main-white;
 			}
 
 			@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
