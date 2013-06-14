@@ -2,9 +2,13 @@
 /*vars*/
 /*mixins*/
 /*main*/
+html {
+  background: url(../img/main.jpg) no-repeat center center;
+  min-height: 100%;
+  background-size: cover; }
+
 body {
-  background: url(../img/noise.png) repeat;
-  height: 100%;
+  min-height: 100%;
   font-family: "Roboto Slab", serif; }
 
 #main {
@@ -21,16 +25,12 @@ body {
 .header {
   width: 100%;
   height: 40px;
-  background-color: white;
-  -moz-box-shadow: 3px 3px 1px 1px #e9e9e9;
-  -webkit-box-shadow: 3px 3px 1px 1px #e9e9e9;
-  box-shadow: 3px 3px 1px 1px #e9e9e9; }
+  background-color: rgba(255, 200, 0, 0.4); }
   .header .logo {
     float: left;
     font-size: 20px;
     margin-top: 10px;
-    width: 200px;
-    content: 'Awesome Site Bro'; }
+    width: 200px; }
   .header .nav {
     position: relative;
     display: inline-block;
@@ -43,7 +43,8 @@ body {
         width: 100%;
         margin-right: 0; } }
     .header .nav ul {
-      list-style: none; }
+      list-style-type: none;
+      padding: 0; }
     @media only screen and (min-width: 320px) and (max-width: 1199px) {
       .header .nav .nav-list {
         display: none;
@@ -51,7 +52,8 @@ body {
         font-size: 25px; } }
     @media only screen and (min-width: 1199px) {
       .header .nav .nav-list {
-        display: block !important; } }
+        display: block !important;
+        width: 120%; } }
     .header .nav .nav-mobile {
       display: none;
       cursor: pointer;
@@ -75,12 +77,12 @@ body {
           float: none;
           background-color: #ffc800;
           text-align: center;
-          margin-right: 0;
+          margin-right: 100px;
           padding: 10px 0 10px 0;
           border-bottom: 1px solid white; } }
       .header .nav .nav-item a {
         text-decoration: none;
-        color: #949494; }
+        color: #3f3f3f; }
         .header .nav .nav-item a:hover {
           color: #949494; }
 
@@ -89,10 +91,7 @@ body {
   height: 100%;
   float: left;
   margin-top: 20px;
-  background-color: white;
-  -moz-box-shadow: 3px 3px 1px 1px #e9e9e9;
-  -webkit-box-shadow: 3px 3px 1px 1px #e9e9e9;
-  box-shadow: 3px 3px 1px 1px #e9e9e9; }
+  background-color: rgba(255, 200, 0, 0.4); }
   .content .content-inner {
     width: 100%;
     margin: 0 auto; }
@@ -105,15 +104,15 @@ body {
     @media only screen and (min-width: 481px) and (max-width: 799px) {
       .content .content-inner {
         width: 100%; } }
+    @media only screen and (min-width: 800px) and (max-width: 1199px) {
+      .content .content-inner {
+        width: 100%; } }
     .content .content-inner .item {
       position: relative;
       width: 400px;
       height: 400px;
       float: left;
       background-color: white;
-      -moz-box-shadow: inset 0px 0px 50px #e8e8e8;
-      -webkit-box-shadow: inset 0px 0px 50px #e8e8e8;
-      box-shadow: inset 0px 0px 50px #e8e8e8;
       -webkit-transition: background-color 0.3s ease;
       -moz-transition: background-color 0.3s ease;
       -ms-transition: background-color 0.3s ease;
@@ -153,6 +152,9 @@ body {
         @media only screen and (min-width: 481px) and (max-width: 799px) {
           .content .content-inner .item .image-container {
             width: 100%; } }
+        @media only screen and (min-width: 800px) and (max-width: 1199px) {
+          .content .content-inner .item .image-container {
+            width: 100%; } }
       @media only screen and (min-width: 320px) and (max-width: 480px) {
         .content .content-inner .item {
           width: 100%;
@@ -161,3 +163,6 @@ body {
         .content .content-inner .item {
           width: 100%;
           height: 100%; } }
+      @media only screen and (min-width: 800px) and (max-width: 1199px) {
+        .content .content-inner .item {
+          width: 50%; } }
