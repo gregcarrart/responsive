@@ -14,6 +14,8 @@
 
         <div class="header">
 
+            <div class="logo">Awesome Site, Bro</div>
+
             <div class="nav">
 
                 <ul class="nav-list">
@@ -33,59 +35,37 @@
 
         <div class="content">
 
-            <div class="content-inner">
+        <!--MODAL  -->
 
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+            <div id="modal" style="display:none;">
+                <div id="loading">Loading</div>
+                <a id="close" href="javascript:void(0);">X</a>
+                <div id="modalContent">
+                    <div id="modalImage">
+                        <div id="modalTitle"></div>
                     </div>
-                    <div class="image-container"><img class="hero-image" src="img/test1.jpg" /></div>
+                    <div id="caption"></div>
+                    <div id="url">Project URL: </div>
+                    <div id="clients">Client: </div>
+                    <div id="skills">Skills: </div>
                 </div>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    </div>
-                    <div class="image-container"><img class="hero-image" src="img/test2.jpg" /></div>
-                </div>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    </div>
-                    <div class="image-container"><img class="hero-image" src="img/test3.jpg" /></div>
-                </div>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    </div>
-                    <div class="image-container"><img class="hero-image" src="img/test4.jpg" /></div>
-                </div>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    </div>
-                    <div class="image-container"><img class="hero-image" src="img/test5.jpg" /></div>
-                </div>
-
-                <div class="item">
-                    <div class="meta">
-                        <div class="title">Title</div>
-                        <div class="snippet">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
-                    </div>
-                    <div class="image-container"><img class="hero-image" src="img/test6.jpg" /></div>
-                </div>
-
             </div>
 
+        <!--ITEM CONTAINER -->
+
+            <div class="content-inner"></div>
+
         </div>
+
+        <footer class="footer">
+
+                <p> Copyright 1999 Awesome Site, Bro </p>
+
+        </div>
+
+        <!--MODAL OVERlAY -->
+
+        <div id="overlay" style="display:none;"></div>
 
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>

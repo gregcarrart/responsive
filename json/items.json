@@ -1,0 +1,58 @@
+{
+    "items": [
+        {
+            "title": "Item 1",
+            "image": "img/test1.jpg",
+            "longDesc": "item 1 desc Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.",
+            "shortDesc": "item 1 desc Lorem ipsum dolor sit amet",
+            "url": "http://www.google.com",
+            "client": "Company A",
+            "skills": "Interwebz"
+        },
+        {
+            "title": "Item 2",
+            "image": "img/test2.jpg",
+            "longDesc": "item 2 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Laoreet mattis, massa.",
+            "shortDesc": "item 2 desc dolor sit amet consectetuer adipiscing elit.",
+            "url": "http://www.google.com",
+            "client": "Company B",
+            "skills": "Corel Draw"
+        },
+        {
+            "title": "Item 3",
+            "image": "img/test3.jpg",
+            "longDesc": "item 3 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.",
+            "shortDesc": "item 3 desc adipiscing elit. Nullam enim leo, lorem",
+            "url": "http://www.google.com",
+            "client": "Company A",
+            "skills": "Photoshop, Paint"
+        },
+        {
+            "title": "Item 4",
+            "image": "img/test4.jpg",
+            "longDesc": "item 4 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.",
+            "shortDesc": "item 4 desc Morbi ut mi. Nullam enim leo, egestas id.",
+            "url": "http://www.google.com",
+            "client": "Company C",
+            "skills": "Rocket Science"
+        },
+        {
+            "title": "Item 5",
+            "image": "img/test5.jpg",
+            "longDesc": "item 5 Lorem ipsum dolor sit amet. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.",
+            "shortDesc": "item 5 Lorem ipsum dolor sit amet.",
+            "url": "http://www.google.com",
+            "client": "Company D",
+            "skills": "Advanced Calculus"
+        },
+        {
+            "title": "Item 6",
+            "image": "img/test6.jpg",
+            "longDesc": "item 6 desc lorem ipsum Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa.",
+            "shortDesc": "item 6 Morbi ut mi. Nullam enim leo, egestas id, condimentum at.",
+            "url": "http://www.google.com",
+            "client": "Company A",
+            "skills": "HTML9, CSS5"
+        }
+    ]
+}

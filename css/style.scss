@@ -24,6 +24,7 @@ $tablet-min: $mobile-max + 1;
 $tablet-max: $main-width - 1;
 $between-max: 799px;
 $between-min: $mobile-max +1;
+$middle-min: $between-max + 1;
 
 /*mixins*/
 @mixin main-shadow {
@@ -50,13 +51,32 @@ $between-min: $mobile-max +1;
 }
 
 @mixin item-transition {
-	-webkit-transition: background-color 0.3s ease;
-  	-moz-transition: background-color 0.3s ease;
-  	-ms-transition: background-color 0.3s ease;
-  	-o-transition: background-color 0.3s ease;
-  	transition: background-color 0.3s ease;
+	-webkit-transition: opacity 0.3s ease;
+  	-moz-transition: opacity 0.3s ease;
+  	-ms-transition: opacity 0.3s ease;
+  	-o-transition: opacity 0.3s ease;
+  	transition: opacity 0.3s ease;
 }
 
+@mixin mobile-screen {
+	@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) { @content; }
+}
+
+@mixin tablet-screen {
+	@media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) { @content; }
+}
+
+@mixin between-screen {
+	@media only screen and (min-width: $between-min) and (max-width: $between-max) { @content; }
+}
+
+@mixin middle-screen {
+	@media only screen and (min-width: $middle-min) and (max-width: $tablet-max) { @content; }
+}
+
+@mixin mobile-nav {
+	@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) { @content; }
+}
 /*main*/
 html {
 	background: $main-background;
@@ -69,30 +89,36 @@ body {
 	font-family: $main-font;
 }
 
+::selection {
+	background-color: $main-title-color;
+	color: $main-color;
+}
+
+::-moz-selection {
+	background-color: $main-title-color;
+	color: $main-color;
+}
+
 #main {
 	width: $main-width;
 	height: 100%;
 	margin: 0 auto;
-
-	@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
-		width: 100%;
-	}
-
-	@media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
-		width: 100%;
-	}
+	@include mobile-screen {width: 100%;};
+	@include tablet-screen {width: 100%;}	
 }
 
 .header {
+	position: relative;
 	width: 100%;
-	height: 40px;
+	height: 60px;
 	background-color: $main-background-color;
+	@include mobile-nav {height: 40px;}
 
 	.logo {
-		float: left;
-		font-size: 20px;
-		margin-top: 10px;
-		width: 200px;
+		position: absolute;
+		left: 0;
+		font-size: 50px;
+		@include mobile-nav {font-size: 30px;}
 	}
 
 	.nav {
@@ -102,11 +128,7 @@ body {
 		font-size: 14px;
 		font-weight: 700;
 		margin-right: 20px;
-
-		@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
-			width: 100%;
-			margin-right: 0;
-		}
+		@include mobile-nav {width: 100%; margin-right: 0;}
 
 		ul {
 			list-style-type: none;
@@ -114,13 +136,9 @@ body {
 		}
 
 		.nav-list {
-			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
-				display: none;
-				margin-top: 40px;
-				font-size: 25px;			
-			}
+			@include mobile-nav {display: none; margin-top: 40px; font-size: 25px;}
 
-			@media only screen and (min-width: $main-width - 1) {
+			@media only screen and (min-width: $tablet-max) {
 				display: block !important;
 				width: 120%;
 			}
@@ -135,10 +153,7 @@ body {
 			background: $main-title-color url(../img/icon-menu.svg) no-repeat center center;
 			height: 40px;
 			width: 40px;
-
-			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
-				display: block;
-			}
+			@include mobile-nav {display: block;}
 		}
 
 		.nav-item {
@@ -147,7 +162,7 @@ body {
 			zoom: 1;
 			margin-right: 20px;
 
-			@media only screen and (min-width: $mobile-min) and (max-width: $tablet-max) {
+			@include mobile-nav {
 				width: 100%;
 				float: none;
 				background-color: $main-title-color;
@@ -174,26 +189,91 @@ body {
 	float: left;
 	margin-top: 20px;
 	background-color: $main-background-color;
+	margin-bottom: 20px;
+
+	#modal {
+	    position: absolute;
+	    width: 800px;
+	 	min-height: 100%;
+	    z-index: 10000;
+	    left: 50%;
+	    top: 0;
+	    margin-left: -400px;
+	    background-color: rgba(0,0,0,0.2);
+
+	    #loading {
+		    position: absolute;
+		    width: 80px;
+		    font-size: 14px;
+		    top: 100px;
+		    left: 50%;
+		    text-transform: uppercase;
+		    margin-left: -40px;
+		    padding: 3px;
+		    background: rgba(255, 255, 255, 0.8);
+		    color: black;
+		    text-align: center;
+		}
+
+		#close {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    display: block;
+		    font-size: 14px;
+		    text-transform: uppercase;
+		    padding: 10px;
+		    background: rgba(0, 0, 0, 0.5);
+		    color: #fff;
+		    text-decoration: none;
+		    z-index: 1;
+		}
+
+	    #modalContent {
+		    position: absolute;
+		    height: auto;
+		    top: 0;
+		    left: 0;
+		    z-index: 0;
+
+		    #modalImage {
+		    	width: 100%;
+		    	position: relative;
+		    	img {
+		    		width: 100%;
+		    	}
+
+		    	#modalTitle {
+		    		position: absolute;
+		    		bottom: 0;
+		    		width: 100%;
+		    		background-color: $snippet-background-color;
+		    		font-size: 40px;
+		    		color: $main-title-color;
+		    	}
+		    }
+
+		    #caption {
+		    	color: $main-color;
+		    }
+
+		    #clients {
+		    	color: $main-color;
+		    }
+
+		    #skills {
+		    	color: $main-color;
+		    }
+		}
+	}
 
 	.content-inner {
 		width: 100%;
 		margin: 0 auto;
-
-		@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
-			width: 100%;
-		}
-
-		@media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) {
-			width: 800px;
-		}
-
-		@media only screen and (min-width: $between-min) and (max-width: $between-max) {
-			width: 100%;
-		}
-
-		@media only screen and (min-width: 800px) and (max-width: 1199px) {
-			width: 100%;
-		}
+		@include mobile-screen {width: 100%;}
+		@include tablet-screen {width: 800px;}
+		@include between-screen {width: 100%;}
+		@include middle-screen {width: 100%;}
 
 		.item {
 			position: relative;
@@ -202,15 +282,19 @@ body {
 			float: left;
 			background-color: $items-background-color;
 			@include item-transition;
+			@include mobile-screen {width: 100%; height: 100%;}
+			@include between-screen {width: 100%; height: 100%;}
+			@include middle-screen {width: 50%;}
 
 			&:hover {
-				background-color: #fff4cd;
+				opacity: 0.8;
 				cursor: pointer;
 			}
 
 			.meta {
 				position: absolute;
 				bottom: 0;
+				width: 100%;
 
 				.title {
 					font-size: 50px;
@@ -230,45 +314,37 @@ body {
 				width: $items-width;
 				height: $items-height;
 				overflow: hidden;
+				@include mobile-screen {width: 100%;}
+				@include between-screen {width: 100%;}
+				@include middle-screen {width: 100%;}
 
 				.hero-image {
 					height: 400px;
-
-					@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
-						height: 100%;
-					}
-
-					@media only screen and (min-width: $between-min) and (max-width: $between-max) {
-						height: 115%;
-					}
+					@include mobile-screen {height: 100%;}
+					@include between-screen {height: 115%;}
 				}
-
-				@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
-					width: 100%;
-				}
-
-				@media only screen and (min-width: $between-min) and (max-width: $between-max) {
-					width: 100%;
-				}
-
-				@media only screen and (min-width: 800px) and (max-width: 1199px) {
-					width: 100%;
-				}
-			}
-
-			@media only screen and (min-width: $mobile-min) and (max-width: $mobile-max) {
-				width: 100%;
-				height: 100%;
-			}
-
-			@media only screen and (min-width: $between-min) and (max-width: $between-max) {
-				width: 100%;
-				height: 100%;
-			}
-
-			@media only screen and (min-width: 800px) and (max-width: 1199px) {
-				width: 50%;
 			}			
 		}
 	}
+}
+
+.footer {
+	clear: both;
+	width: 100%;
+	height: 60px;
+	background-color: $main-background-color;
+
+	p {
+		line-height: 60px;
+	}
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.8);
 }
